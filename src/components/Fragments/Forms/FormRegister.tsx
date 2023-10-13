@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import RouteName from "../../router/RouteName";
-import ButtonAuth from "../Elements/Button/ButtonAuth";
-import Label from "../Elements/Input_Label/Label";
-import Input from "../Elements/Input_Label/Input";
+import RouteName from "../../../router/RouteName";
+import ButtonAuth from "../../Elements/Button/ButtonAuth";
+import Label from "../../Elements/Input_Label/Label";
+import Input from "../../Elements/Input_Label/Input";
 import { FormEvent, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCamera } from "@fortawesome/free-solid-svg-icons";

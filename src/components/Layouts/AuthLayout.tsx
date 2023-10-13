@@ -1,4 +1,3 @@
-
 interface AuthLayoutProps{
     children: JSX.Element;
     images: string;

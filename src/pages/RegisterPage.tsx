@@ -1,19 +1,15 @@
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Dispatch, FormEvent, Fragment } from "react";
-import { Link, NavigateFunction, useNavigate } from "react-router-dom";
+import { FormEvent, Fragment } from "react";
+import { NavigateFunction, useNavigate } from "react-router-dom";
 import RouteName from "../router/RouteName";
 import AuthLayout from "../components/Layouts/AuthLayout";
-import FormRegister from "../components/Fragments/FormRegister";
+import FormRegister from "../components/Fragments/Forms/FormRegister";
 import useRegister from "../services/auth/Register";
 import { ToastContainer, toast } from "react-toastify";
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
-import { useDispatch } from "react-redux";
-import { saveEmail } from "../redux/slice/autoFillEmail";
+import HeaderBackButton from "../components/Fragments/Navigations/HeaderBackButton";
 
 function RegisterPage() {
-    const dispatch: Dispatch<any> = useDispatch();
     const navigate: NavigateFunction = useNavigate();
     const MySwal = withReactContent(Swal);
 
@@ -30,7 +26,6 @@ function RegisterPage() {
 
                     });
                 } else {
-                    dispatch(saveEmail(data.data.data.email))
                     MySwal.fire({
                         icon: 'success',
                         title: 'Register success',
@@ -75,12 +70,7 @@ function RegisterPage() {
 
     return (
         <Fragment>
-            <header className="flex items-center w-full h-20 px-5">
-                <Link to={RouteName.HOME}>
-                    <FontAwesomeIcon icon={faArrowLeft} className="h-6 w-6 text-slate-500 align-middle" />
-                </Link>
-                <span className="text-lg font-semibold ml-4 text-emerald-700">Register</span>
-            </header>
+            <HeaderBackButton route={RouteName.HOME} text="Register" />
             <AuthLayout images="register-vector.svg">
                 <FormRegister handleSubmit={handleSubmit} isLoading={isLoading} />
             </AuthLayout>

@@ -1,5 +1,5 @@
 import { Fragment } from "react"
-import Header from "../components/Fragments/Header"
+import Header from "../components/Fragments/Navigations/Header"
 
 function ShopPage() {
     return (

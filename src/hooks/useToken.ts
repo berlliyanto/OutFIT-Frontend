@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import jwtdecode from "jwt-decode";
 import { clearTokenAfterLogout } from "../redux/slice/authSlice";
 import { Dispatch } from "@reduxjs/toolkit";
+import { useNavigate } from "react-router-dom";
+import RouteName from "../router/RouteName";
 
 interface JWTData {
   id: number;
@@ -22,7 +24,8 @@ const initialData: JWTData = {
   exp: 0,
 };
 
-const useToken = () => {
+const useToken = (id?: number | string) => {
+  const navigate = useNavigate();
   const [isAuth, setIsAuth] = useState(false);
   const [decodedJWT, setDecodedJWT] = useState<JWTData>(initialData);
   const token: any = useSelector((state: any) => state.token);
@@ -38,11 +41,15 @@ const useToken = () => {
         localStorage.removeItem("token");
         dispatch(clearTokenAfterLogout());
         setDecodedJWT(initialData);
+        navigate(RouteName.HOME, {replace : true});
+      }else if(id){
+        id != decodedJWT.id ? navigate(RouteName.HOME) : null;
       }
     } else {
       setIsAuth(false);
       setDecodedJWT(initialData);
       dispatch(clearTokenAfterLogout());
+      navigate(RouteName.HOME, {replace : true});
     }
   }, [token]);
 
