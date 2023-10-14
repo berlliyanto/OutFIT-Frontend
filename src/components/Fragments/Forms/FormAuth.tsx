@@ -21,7 +21,7 @@ const FormAuth: React.ForwardRefRenderFunction<HTMLInputElement, FormAuthProps> 
             <ButtonAuth text="Login" disabled={isLoading} />
             <span className="text-sm text-slate-500 text-center mt-4">Don't have an account?
                 <Link to={RouteName.REGISTER} className="text-sky-500 pl-1 font-semibold">
-                    REGISTER
+                    Register
                 </Link>
             </span>
         </form>

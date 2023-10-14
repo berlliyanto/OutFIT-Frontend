@@ -1,18 +1,10 @@
-import { Fragment } from "react";
-import Header from "./components/Fragments/Navigations/Header";
 import useToken from "./hooks/useToken";
+import HomePage from "./pages/HomePage";
 
 function App() {
   const {isAuth} = useToken();
   return (
-    <Fragment>
-      <Header current="home" />
-      <p>
-        {
-          isAuth ? 'Authenticated' : 'Not Authenticated'
-        }
-      </p>
-    </Fragment>
+    <HomePage isAuth={isAuth} />
   );
 }
 

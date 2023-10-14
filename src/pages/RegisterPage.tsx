@@ -16,7 +16,7 @@ function RegisterPage() {
     const { mutate, isLoading } = useRegister(
         (data) => {
             if (data.status == 200) {
-                if (data.data.message?.includes("Duplicate")) {
+                if (data.data.response.message?.includes("Duplicate")) {
                     MySwal.fire({
                         icon: 'error',
                         title: 'Oops...',

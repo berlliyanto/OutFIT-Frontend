@@ -1,18 +1,18 @@
 import { configureStore } from '@reduxjs/toolkit'
-import darkModeSlice from './slice/darkModeSlice'
+import darkModeReducer from './slice/darkModeSlice'
 import authReducer from './slice/authSlice';
 import autoFillEmailReducer from './slice/autoFillEmail'
 
 const store = configureStore({
     reducer: {
         token: authReducer,
-        darkMode: darkModeSlice,
+        darkMode: darkModeReducer,
         autoFillEmail: autoFillEmailReducer,
     },
 })
 
-const firstState = store.getState()
-console.log('On Store' , firstState)
+const state = store.getState()
+console.log('On Store' , state)
 
 store.subscribe(() => {
     console.log('On Subscribe',store.getState())

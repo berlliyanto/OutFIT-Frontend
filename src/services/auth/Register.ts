@@ -1,5 +1,5 @@
 import { useMutation } from "react-query";
-import axiosInstance from '../../lib/axios';
+import {axiosInstance} from '../../lib/axios';
 
 type RegisterParams = FormData;
 

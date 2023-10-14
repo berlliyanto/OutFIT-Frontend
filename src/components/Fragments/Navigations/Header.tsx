@@ -5,7 +5,7 @@ import Button from "../../Elements/Button/Button";
 import NavLinks from "../../Elements/Nav/NavLinks";
 import Logo from "../../Elements/Avatar/Logo";
 import SideBar from './SideBar';
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { NavigateFunction, useNavigate } from "react-router-dom";
 import RouteName from "../../../router/RouteName";
 import useToken from "../../../hooks/useToken";
@@ -20,6 +20,7 @@ const Header: React.FC<HeaderProps> = ({ current }) => {
 
     const {isAuth, data} = useToken();
     const [sideBarActive, setSideBarActive] = useState<boolean>(false);
+    const [isAtTop, setIsAtTop] = useState<boolean>(true);
 
     const handleSideBar = (): void => {
         setSideBarActive(!sideBarActive);
@@ -31,9 +32,26 @@ const Header: React.FC<HeaderProps> = ({ current }) => {
     const redirectToLoginPage = (): void => navigate(RouteName.LOGIN);
     const redirectToRegisterPage = (): void => navigate(RouteName.REGISTER)
 
+    useEffect(() => {
+        const handleScroll = () => {
+          if (window.scrollY === 0) {
+            setIsAtTop(true);
+          } else {
+            setIsAtTop(false);
+          }
+        };
+    
+        window.addEventListener('scroll', handleScroll);
+    
+        return () => {
+          window.removeEventListener('scroll', handleScroll);
+        };
+      }, []);
+
     return (
         <Fragment>
-            <header className="relative z-50 flex justify-between items-center px-4 w-full h-20 md:px-6 xl:px-20 ">
+            <header className={`md:fixed z-50 flex justify-between items-center px-4 w-full h-20 md:px-6 xl:px-20 duration-300 
+            ${!isAtTop? 'md:bg-slate-50/80 md:backdrop-blur-lg md:shadow-md md:h-[4.5rem]' : 'md:bg-transparent md:h-20'}`}>
                 <div className="flex items-center gap-16">
                     <Logo />
                     <NavLinks current={current} />

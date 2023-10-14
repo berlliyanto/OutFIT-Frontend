@@ -1,6 +1,6 @@
 const LoaderDart = () => {
     return (
-        <div className="flex justify-center items-center min-h-screen w-full absolute top-0 left-0">
+        <div className="flex justify-center items-center h-[500px] w-full">
             <div className="loader-dart"></div>
         </div>
     )
