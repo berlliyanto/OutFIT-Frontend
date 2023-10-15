@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import LoaderDart from '../components/Elements/Loader/LoaderDart';
 import ProfileLayout from '../components/Layouts/ProfileLayout';
-import { ProfileInterface } from './Interface/InterfaceProfile';
+import { ProfileInterface } from '../Interface/InterfaceProfile';
 
 const profileMenu: any[] = [
     {

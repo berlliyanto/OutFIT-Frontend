@@ -1,7 +1,8 @@
 import { useQuery } from "react-query";
 import { axiosRapidAPI } from "../../lib/axios";
+import axios from "axios";
 
-export const useGetProducts = (category: string, concept: string, pageSize: string) => {
+export const useGetProducts = (category: string | undefined, concept: string | undefined, pageSize: string | undefined) => {
     return useQuery({
         queryKey: ["products"],
         queryFn: async() => {
@@ -16,6 +17,9 @@ export const useGetProducts = (category: string, concept: string, pageSize: stri
                   },
             });
             return response;        
+        },
+        onError(err) {
+            return err;
         },
     })
 }

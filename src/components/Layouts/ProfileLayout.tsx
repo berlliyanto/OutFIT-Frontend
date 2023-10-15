@@ -1,5 +1,5 @@
 import showFormattedDate from "../../lib/changeDateFormat";
-import { ProfileInterface } from "../../pages/Interface/InterfaceProfile";
+import { ProfileInterface } from "../../Interface/InterfaceProfile";
 import ListProfile from "../Elements/List/ListProfile";
 import ProfileBanner from "../Fragments/Profile/ProfileBanner";
 import ProfileMenu from "../Fragments/Profile/ProfileMenu";

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import NavLinks from '../../Elements/Nav/NavLinks';
 import { Fragment } from 'react';
 import RouteName from '../../../router/RouteName';
+import { Separator } from "@/components/ui/separator";
 
 interface SideBarProps {
     active: boolean;
@@ -28,6 +29,7 @@ const SideBar: React.FC<SideBarProps> = ({ active, current, isAuth, id }) => {
                             :
                             <Fragment>
                                 <Link to={RouteName.LOGIN} className="text-slate-400 text-sm hover:text-slate-200 duration-300">Login</Link>
+                                <Separator orientation="vertical" className='bg-slate-400' />
                                 <Link to={RouteName.REGISTER} className="text-slate-400 text-sm hover:text-slate-200 duration-300">Register</Link>
                             </Fragment>
                     }

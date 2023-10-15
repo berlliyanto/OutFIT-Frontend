@@ -18,7 +18,7 @@ const NavLinks: React.FC<NavLinksProps> = ({current, isSideBar}) => {
         <nav className={`${visibility} md:block`}>
             <ul className={`flex ${col} gap-4 md:gap-8 xl:gap-12`}>
                 <li><Link to="/" className={`${current=='home' ? 'text-emerald-600' : textColor} text-lg font-semibold py-4 hover:text-emerald-600 duration-300`}>Home</Link></li>
-                <li><Link to="/shop" className={`${current=='shop' ? 'text-emerald-600' : textColor} text-lg font-semibold py-4 hover:text-emerald-600 duration-300`}>Shop</Link></li>
+                <li><Link to="/shop/men_all/BASICS/30" className={`${current=='shop' ? 'text-emerald-600' : textColor} text-lg font-semibold py-4 hover:text-emerald-600 duration-300`}>Shop</Link></li>
                 <li><Link to="/features" className={`${current=='features' ? 'text-emerald-600' : textColor} text-lg font-semibold py-4 hover:text-emerald-600 duration-300`}>Features</Link></li>
                 <li><Link to="/about" className={`${current=='about' ? 'text-emerald-600' : textColor} text-lg font-semibold py-4 hover:text-emerald-600 duration-300`}>About</Link></li>
                 <li><Link to="/contact" className={`${current=='contact' ? 'text-emerald-600' : textColor} text-lg font-semibold py-4 hover:text-emerald-600 duration-300`}>Contact</Link></li>
