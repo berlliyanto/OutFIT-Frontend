@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import RouteName from "../router/RouteName";
 import { FormEvent, Fragment, useEffect, useRef } from "react";
 import { ToastContainer, toast } from 'react-toastify';
@@ -12,6 +12,10 @@ import HeaderBackButton from "../components/Fragments/Navigations/HeaderBackButt
 import { saveEmail } from "../redux/slice/autoFillEmail";
 
 function Loginpage() {
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+    const redirectValue = queryParams.get('redirect');
+
     const emailSelector = useSelector((state: any) => state.autoFillEmail);
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -27,7 +31,7 @@ function Loginpage() {
                     onClick: () => toast.dismiss()
                 });
                 setTimeout(() => {
-                    navigate(RouteName.HOME, { replace: true });
+                    navigate(redirectValue ? redirectValue : RouteName.HOME, { replace: true });
                 }, 1500);
             }
         },

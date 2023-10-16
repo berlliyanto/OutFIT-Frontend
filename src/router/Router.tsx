@@ -8,6 +8,7 @@ import ContactPage from "../pages/ContactPage";
 import Loginpage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
 import ProfilePage from "../pages/ProfilePage";
+import ProductDetailPage from "@/pages/ProductDetailPage";
 
 class Router {
     public router = createBrowserRouter([
@@ -42,6 +43,14 @@ class Router {
         {
             path: RouteName.PROFILE,
             element: <ProfilePage />
+        },
+        {
+            path: RouteName.PRODUCT_DETAIL,
+            element: <ProductDetailPage />
+        },
+        {
+            path: "*",
+            element: <h1>Not Found</h1>
         }
 
     ])

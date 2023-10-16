@@ -5,6 +5,7 @@ import ProductCard from "../components/Fragments/Card/ProductCard";
 import LoaderDart from "../components/Elements/Loader/LoaderDart";
 import Footer from "../components/Fragments/Footer/Footer";
 import { NavigateFunction, Params, useNavigate, useParams } from "react-router-dom";
+import ShopLayout from "@/components/Layouts/ShopLayout";
 
 
 interface ListInterface {
@@ -30,11 +31,11 @@ function ShopPage() {
             <div className="col-span-full"><LoaderDart /></div>
             : data?.data.results.map((product: any) => {
                 return <ProductCard
+                    code={product.articles[0].code}
                     previewProduct={product}
                     images={product.images[0]['baseUrl']}
                     title={product.name}
                     price={product.price['formattedValue']}
-                    onClickTitle={() => { }}
                     key={product.code} />
             })
     }
@@ -76,9 +77,9 @@ function ShopPage() {
                         })
                     }
                 </ul>
-                <section className="grid grid-cols-2 gap-x-3 gap-y-5 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+                <ShopLayout>
                     {renderProduct()}
-                </section>
+                </ShopLayout>
             </main>
             <Footer />
         </Fragment>

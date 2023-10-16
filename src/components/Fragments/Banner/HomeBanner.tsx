@@ -8,7 +8,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 import 'swiper/css/parallax';
 
-const SwiperHome: React.FC = () => {
+const HomeBanner: React.FC = () => {
     return (
         <Swiper
             modules={[Navigation, Scrollbar, A11y, EffectFade, Autoplay, Parallax, Pagination]}
@@ -72,4 +72,4 @@ const SwiperHome: React.FC = () => {
     )
 }
 
-export default SwiperHome;
+export default HomeBanner;

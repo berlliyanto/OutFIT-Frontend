@@ -6,10 +6,11 @@ interface InputProps {
     name: string;
     id: string;
     required: boolean;
+    className? :string;
 }
 
 const Input: React.ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
-    { type, placeholder, name, id, required }, ref
+    { type, placeholder, name, id, required , className}, ref
 ) => {
     return (
         <input
@@ -19,7 +20,7 @@ const Input: React.ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
             id={id}
             required={required}
             ref={ref}
-            className="bg-emerald-100 rounded-md h-10 text-slate-500 pl-3 outline-none focus:ring-1 focus:ring-emerald-400"
+            className={`bg-emerald-100 rounded-md h-10 text-slate-500 pl-3 outline-none focus:ring-1 focus:ring-emerald-400 ${className}`}
         />
     );
 };

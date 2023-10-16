@@ -1,5 +1,5 @@
 import ProductCard from "../Fragments/Card/ProductCard";
-import CardCollection from "../Fragments/Home/CardCollection";
+import CardCollection from "../Fragments/Card/CardCollection";
 import { useGetProducts } from "../../services/products/GetProducts";
 import Button from "../Elements/Button/Button";
 import LoaderDart from "../Elements/Loader/LoaderDart";

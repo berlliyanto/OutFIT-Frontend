@@ -43,6 +43,7 @@ export default {
         'button-men': "url('images/man3.jpg')",
         'button-women': "url('images/women2.jpg')",
         'button-kid': "url('images/kid2.jpg')",
+        'about-banner': "url('images/abs1.jpg')",
       },
       keyframes: {
         wiggle: {

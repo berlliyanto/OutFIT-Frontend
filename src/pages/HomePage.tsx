@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import Header from "../components/Fragments/Navigations/Header";
-import SwiperHome from "../components/Fragments/Swiper/SwiperHome";
+import HomeBanner from "../components/Fragments/Banner/HomeBanner";
 import HomeLayout from "../components/Layouts/HomeLayout";
 import Footer from "../components/Fragments/Footer/Footer";
 
@@ -13,7 +13,7 @@ function HomePage({ isAuth }: HomePageInterface) {
     return (
         <Fragment>
             <Header current="home" />
-            <SwiperHome />
+            <HomeBanner />
             <HomeLayout />
             <Footer />
         </Fragment>

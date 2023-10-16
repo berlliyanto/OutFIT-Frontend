@@ -40,13 +40,14 @@ const FormRegister: React.FC<FormRegisterProps> = ({ handleSubmit, isLoading }) 
                     </div>
                 )}
             </label>
-            <input type="file" name="image" id="image" onChange={handleAvatarChange} style={{ display: 'none' }}/>
+            <input type="file" name="image" id="image" accept=".jpg, .jpeg, .png, .svg" onChange={handleAvatarChange} style={{ display: 'none' }}/>
             <Label htmlFor="name" text="Name:" />
             <Input type="text" name="names" id="names" placeholder="Input name" required={true} />
             <Label htmlFor="email" text="Email:" />
             <Input type="email" name="email" id="email" placeholder="Input email" required={true} />
             <Label htmlFor="password" text="Password:" />
             <Input type="password" name="password" id="password" placeholder="Input password" required={true} />
+            <div className="mb-5"></div>
             <ButtonAuth text="Register" disabled={isLoading} />
             <span className="text-sm text-slate-500 text-center mt-4">Have an account?
                 <Link to={RouteName.LOGIN} className="text-sky-500 pl-1 font-semibold">

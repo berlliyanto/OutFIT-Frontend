@@ -1,8 +1,8 @@
 import showFormattedDate from "../../lib/changeDateFormat";
 import { ProfileInterface } from "../../Interface/InterfaceProfile";
 import ListProfile from "../Elements/List/ListProfile";
-import ProfileBanner from "../Fragments/Profile/ProfileBanner";
-import ProfileMenu from "../Fragments/Profile/ProfileMenu";
+import ProfileBanner from "../Fragments/Banner/ProfileBanner";
+import ProfileMenu from "../Fragments/Navigations/ProfileMenu";
 
 interface ProfileLayoutProps {
     profileMenu: any[];

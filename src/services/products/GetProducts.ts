@@ -6,15 +6,15 @@ export const useGetProducts = (category: string | undefined, concept: string | u
     return useQuery({
         queryKey: ["products"],
         queryFn: async() => {
-            const response = await axiosRapidAPI.get("/products/list", {
-                params: {
-                    country: 'us',
-                    lang: 'en',
-                    currentpage: '0',
-                    pagesize: pageSize,
-                    categories: category,
-                    concepts: concept
-                  },
+            const response = await axios.get("http://localhost:5000/api/products", {
+                // params: {
+                //     country: 'us',
+                //     lang: 'en',
+                //     currentpage: '0',
+                //     pagesize: pageSize,
+                //     categories: category,
+                //     concepts: concept
+                //   },
             });
             return response;        
         },

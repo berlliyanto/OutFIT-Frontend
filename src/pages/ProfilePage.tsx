@@ -36,7 +36,10 @@ function ProfilePage() {
     const navigate: NavigateFunction = useNavigate();
     const id: string | number | undefined = useParams().id;
     const [profile, setProfile] = useState<ProfileInterface>();
-    useToken(id);
+    const { isAuth } = useToken(id);
+    useEffect(() => {
+        if(!isAuth) navigate(RouteName.LOGIN, {replace: true});
+    }, [isAuth])
 
     const { mutate: getMutate, isLoading } = useGetProfile(
         (data) => {
