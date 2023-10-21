@@ -50,7 +50,7 @@ const useToken = (id?: number | string) => {
       setDecodedJWT(initialData);
       dispatch(clearTokenAfterLogout());
     }
-  }, [token]);
+  }, []);
 
   return {
     isAuth: isAuth,

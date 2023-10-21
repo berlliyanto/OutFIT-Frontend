@@ -17,7 +17,7 @@ const FormAuth: React.ForwardRefRenderFunction<HTMLInputElement, FormAuthProps> 
             <Input type="email" name="email" id="email" placeholder="Input email" required={true} ref={ref} />
             <Label htmlFor="password" text="Password:" />
             <Input type="password" name="password" id="password" placeholder="Input password" required={true} />
-            <a href="#" className="text-sm text-sky-500 mt-1 mb-5">Forgot password?</a>
+            <Link to={RouteName.FORGOT_PW} className="text-sm text-sky-500 mt-1 mb-5">Forgot password?</Link>
             <ButtonAuth text="Login" disabled={isLoading} />
             <span className="text-sm text-slate-500 text-center mt-4">Don't have an account?
                 <Link to={RouteName.REGISTER} className="text-sky-500 pl-1 font-semibold">

@@ -3,6 +3,7 @@ import HomePage from "./pages/HomePage";
 
 function App() {
   const {isAuth} = useToken();
+  console.log(isAuth);
   return (
     <HomePage isAuth={isAuth} />
   );

@@ -9,6 +9,8 @@ import Loginpage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
 import ProfilePage from "../pages/ProfilePage";
 import ProductDetailPage from "@/pages/ProductDetailPage";
+import ForgotPwPage from "@/pages/ForgotPwPage";
+import ResetPwPage from "@/pages/ResetPwPage";
 
 class Router {
     public router = createBrowserRouter([
@@ -47,6 +49,14 @@ class Router {
         {
             path: RouteName.PRODUCT_DETAIL,
             element: <ProductDetailPage />
+        },
+        {
+            path: RouteName.FORGOT_PW,
+            element: <ForgotPwPage />
+        },
+        {
+            path: RouteName.RESET_PW,
+            element: <ResetPwPage />
         },
         {
             path: "*",

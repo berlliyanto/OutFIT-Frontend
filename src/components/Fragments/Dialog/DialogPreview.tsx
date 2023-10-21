@@ -35,6 +35,17 @@ const DialogPreview: React.FC<PreviewProductInterface> = ({ code, categoryName, 
         // console.log(e.currentTarget.quantity.value);
     }
 
+    const increment = (): void => {
+        setValue((prev) => prev + 1);
+    }
+
+    const decrement = (): void => {
+        setValue((prev) => {
+            if(prev === 0) return 0;
+            return prev - 1;
+        });
+    }
+
     useEffect(() => {
         setTotalPrice(value * price.value)
     }, [value])
@@ -60,10 +71,13 @@ const DialogPreview: React.FC<PreviewProductInterface> = ({ code, categoryName, 
                     <form onSubmit={handleSubmit} className="flex flex-col gap-3 lg:gap-7 lg:mt-2">
                         <SelectData label="Size" item={size} placeholder="Select Size" name="size" />
                         <div className="flex justify-between items-end">
-                        <InputAddMin name="quantity" setValue={setValue} value={value} />
+                        <InputAddMin name="quantity" increment={increment} decrement={decrement} value={value} setValue={setValue} />
                         <p className="text-sm text-slate-500 lg:text-lg selection:bg-none">Total : ${totalPrice.toFixed(2)}</p>
                         </div>
-                        <ButtonAuth text="Add to cart" disabled={false} />
+                        <div className="flex items-center justify-evenly">
+                        <ButtonAuth text="Buy directly" disabled={false} />
+                        <ButtonAuth text="Add to Cart" disabled={false} className="bg-orange-500 hover:bg-orange-600 active:bg-orange-700"/>
+                        </div>
                     </form>
                 </div>
             </DialogContent>

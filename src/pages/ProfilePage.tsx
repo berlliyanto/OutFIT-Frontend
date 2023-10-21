@@ -12,23 +12,6 @@ import LoaderDart from '../components/Elements/Loader/LoaderDart';
 import ProfileLayout from '../components/Layouts/ProfileLayout';
 import { ProfileInterface } from '../Interface/InterfaceProfile';
 
-const profileMenu: any[] = [
-    {
-        title: "Profile",
-    },
-    {
-        title: "Address",
-    },
-    {
-        title: "Order",
-    },
-    {
-        title: "Payment",
-    },
-    {
-        title: "Change Password",
-    },
-]
 
 function ProfilePage() {
     const MySwal = withReactContent(Swal);
@@ -36,10 +19,6 @@ function ProfilePage() {
     const navigate: NavigateFunction = useNavigate();
     const id: string | number | undefined = useParams().id;
     const [profile, setProfile] = useState<ProfileInterface>();
-    const { isAuth } = useToken(id);
-    useEffect(() => {
-        if(!isAuth) navigate(RouteName.LOGIN, {replace: true});
-    }, [isAuth])
 
     const { mutate: getMutate, isLoading } = useGetProfile(
         (data) => {
@@ -111,7 +90,7 @@ function ProfilePage() {
         <Fragment>
             <HeaderBackButton route={RouteName.HOME} text="My Account" />
             {
-                isLoading ? <LoaderDart /> : <ProfileLayout profile={profile} signOut={signOut} updateProfile={updateProfile} profileMenu={profileMenu} />
+                isLoading ? <LoaderDart /> : <ProfileLayout profile={profile} signOut={signOut} updateProfile={updateProfile} />
             }
         </Fragment>
     )

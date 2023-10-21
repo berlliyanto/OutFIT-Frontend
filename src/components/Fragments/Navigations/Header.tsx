@@ -10,6 +10,7 @@ import { NavigateFunction, useNavigate } from "react-router-dom";
 import RouteName from "../../../router/RouteName";
 import useToken from "../../../hooks/useToken";
 import AvatarProfile from "../../Elements/Avatar/AvatarProfile";
+import CartSheet from "../Sheet.tsx/CartSheet";
 
 interface HeaderProps {
     current: string;
@@ -57,7 +58,7 @@ const Header: React.FC<HeaderProps> = ({ current }) => {
                     <NavLinks current={current} />
                 </div>
                 <div className={`flex justify-center items-center gap-4 md:${gap}`}>
-                    <FontAwesomeIcon icon={faCartArrowDown} className={`${iconVisiblity} text-slate-700 text-xl cursor-pointer hover:text-emerald-600 duration-300`} />
+                    <CartSheet><FontAwesomeIcon icon={faCartArrowDown} className={`${iconVisiblity} text-slate-700 text-xl cursor-pointer hover:text-emerald-600 duration-300`} /></CartSheet>
                     <FontAwesomeIcon icon={faHeart} className={`${iconVisiblity} text-slate-700 text-xl cursor-pointer hover:text-emerald-600 duration-300`} />
                     {
                         isAuth ? <AvatarProfile dimensi="hidden w-12 h-12" image={data?.image} onClick={()=>{navigate("/profile/" + data.id)}} />
