@@ -9,7 +9,7 @@ interface ForgotPwCardProps{
 
 const ForgotPwCard: React.FC<ForgotPwCardProps> = ({title, desc, children}) => {
     return (
-        <Card className="w-[350px] mx-auto">
+        <Card className="w-[320px] sm:w-[350px] mx-auto">
                 <CardHeader>
                     <CardTitle className="text-slate-800">{title}</CardTitle>
                     <CardDescription className="text-slate-800">{desc}</CardDescription>

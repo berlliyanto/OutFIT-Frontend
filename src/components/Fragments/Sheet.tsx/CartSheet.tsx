@@ -1,13 +1,11 @@
 import {
     Sheet,
     SheetContent,
-    SheetDescription,
-    SheetFooter,
     SheetHeader,
     SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet"
-import React, { ReactNode, useState } from "react"
+import React, { ReactNode, useEffect, useState } from "react"
 import CartSheetItem from "./CartSheetItem";
 import ButtonAuth from "@/components/Elements/Button/ButtonAuth";
 import useIdUser from "@/hooks/useIdUser";
@@ -39,33 +37,34 @@ const cart: CartData[] = [
         price: 60,
         checked: false
     },
-    {
-        id: "tiga",
-        image: "https://image.hm.com/assets/hm/a5/3f/a53fb17a061f7a4850d6e54494c1dbf421090fbe.jpg",
-        title: "Baju Bola3",
-        price: 60,
-        checked: false
-    },
-    {
-        id: "empat",
-        image: "https://image.hm.com/assets/hm/a5/3f/a53fb17a061f7a4850d6e54494c1dbf421090fbe.jpg",
-        title: "Baju Bola4",
-        price: 60,
-        checked: false
-    }
-]
+];
+
+interface ListItemInterface {
+    id: string;
+    qtyValue: number;
+    totalPrice: number;
+}
 
 const CartSheet: React.FC<CartSheetProps> = ({ children }) => {
     const id = useIdUser();
     const [totalPrice, setTotalPrice] = useState<number>(0);
-    const [checkState, setCheckState] = useState<string[]>([]);
+    const [listItem, setListItem] = useState<ListItemInterface[]>([]);
+    const [checkList, setCheckList] = useState<string[]>([]);
 
-    const isAuthButtonDisabled = checkState.length === 0;
+    const isButtonDisabled = checkList.length === 0;
+
+    useEffect(() => {
+        let total = 0;
+        for(const item of listItem){
+            total = total + item.totalPrice;
+        }
+        setTotalPrice(total);
+    },[listItem])
     
     return (
         <Sheet onOpenChange={() => {
             setTotalPrice(0);
-            setCheckState([]);
+            setCheckList([]);
         }}>
             <SheetTrigger>{children}</SheetTrigger>
             <SheetContent side={"right"}>
@@ -74,13 +73,13 @@ const CartSheet: React.FC<CartSheetProps> = ({ children }) => {
                         <div className="flex flex-col h-[500px] overflow-y-auto">
                             {
                                 cart.map((item, index) => {
-                                    return <CartSheetItem key={index} image={item.image} price={item.price} title={item.title} id={item.id} setTotalPrice={setTotalPrice} setCheckState={setCheckState}/>
+                                    return <CartSheetItem key={index} image={item.image} price={item.price} title={item.title} id={item.id}  setCheckList={setCheckList} setListItem={setListItem}/>
                                 })
                             }
                         </div>
                     <div className="absolute bottom-0 left-0 text-sm px-5 flex justify-between items-center w-full h-20 bg-white border-t border-slate-300">
-                        <h1>Total Price : ${checkState.length !== 0 ? totalPrice : 0}</h1>
-                        <ButtonAuth disabled={isAuthButtonDisabled} text="Buy" />
+                        <h1>Total Price : ${checkList.length !== 0 ? totalPrice : 0}</h1>
+                        <ButtonAuth disabled={isButtonDisabled} text="Buy" />
                     </div>
                 </SheetHeader>
             </SheetContent>

@@ -11,6 +11,7 @@ import ProfilePage from "../pages/ProfilePage";
 import ProductDetailPage from "@/pages/ProductDetailPage";
 import ForgotPwPage from "@/pages/ForgotPwPage";
 import ResetPwPage from "@/pages/ResetPwPage";
+import PageNotFound from "@/pages/PageNotFound";
 
 class Router {
     public router = createBrowserRouter([
@@ -60,7 +61,7 @@ class Router {
         },
         {
             path: "*",
-            element: <h1>Not Found</h1>
+            element: <PageNotFound />
         }
 
     ])

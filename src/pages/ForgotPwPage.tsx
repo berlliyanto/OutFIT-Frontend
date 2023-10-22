@@ -6,15 +6,34 @@ import { Label } from "@/components/ui/label"
 import Input from "@/components/Elements/Input_Label/Input";
 import ButtonAuth from "@/components/Elements/Button/ButtonAuth";
 import ForgotPwCard from "@/components/Fragments/Card/ForgotPwCard";
+import useForgotPw from "@/services/auth/ForgotPw";
+import { ToastContainer, toast } from "react-toastify";
 
 function ForgotPwPage() {
 
     const [isSend, setIsSend] = React.useState<boolean>(false);
 
+    const { mutate, isLoading } = useForgotPw(
+        (success) => {
+            setIsSend(true);
+            const message = success.data.message;
+            toast.success(message, {
+                autoClose: 3000
+            })
+        },
+        (error) => {
+            setIsSend(false);
+            const message = error.response.data.message;
+            toast.error(message, {
+                autoClose: 3000
+            })
+        }
+    )
+
     const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault();
         const email: string = e.currentTarget.email.value
-        setIsSend(true);
+        mutate({email});
     }
 
     return (
@@ -34,10 +53,11 @@ function ForgotPwPage() {
                                     <Input type="email" id="email" name="email" placeholder="Your email" required={true} />
                                 </div>
                             </div>
-                            <ButtonAuth text="Submit" disabled={false} />
+                            <ButtonAuth text="Submit" disabled={isLoading ? true : false} />
                         </form>
                 }
             </ForgotPwCard>
+            <ToastContainer />
         </Fragment>
     )
 }

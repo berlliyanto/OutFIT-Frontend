@@ -7,7 +7,7 @@ import Footer from "@/components/Fragments/Footer/Footer"
 function ContactPage() {
     return (
         <Fragment>
-            <Header current="contact" />
+            <Header current="contact" className="md:bg-white"/>
             <main className="md:pt-20 mb-5">
                 <BannerDefault title="Contact Us" />
                 <ContactLayout />

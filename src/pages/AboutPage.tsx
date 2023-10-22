@@ -8,7 +8,7 @@ function AboutPage() {
 
     return (
         <Fragment>
-            <Header current="about" />
+            <Header current="about" className="md:bg-white" />
             <main className="md:pt-20">
                 <BannerDefault title="About Us"/>
                 <AboutLayout />

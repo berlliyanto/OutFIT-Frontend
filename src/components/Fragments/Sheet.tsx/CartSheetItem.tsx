@@ -4,54 +4,61 @@ import { Trash } from "@phosphor-icons/react";
 import InputAddMin from "@/components/Elements/Input_Label/InputAddMin";
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 
+interface ListItemInterface {
+    id: string;
+    qtyValue: number;
+    totalPrice: number;
+}
+
 interface CartSheetItemProps {
     id: string;
     image: string;
     title: string;
     price: number;
-    setTotalPrice: Dispatch<SetStateAction<number>>;
-    setCheckState: Dispatch<SetStateAction<string[]>>;
+    setListItem: Dispatch<SetStateAction<ListItemInterface[]>>;
+    setCheckList: Dispatch<SetStateAction<string[]>>;
 }
 
-const CartSheetItem: React.FC<CartSheetItemProps> = ({ id, image, title, price, setTotalPrice, setCheckState }) => {
+const CartSheetItem: React.FC<CartSheetItemProps> = ({ id, image, title, price, setCheckList, setListItem }) => {
 
     const [qtyValue, setQtyValue] = useState<number>(1);
-    const [pricePerItem, setPricePerItem] = useState<number>(price);
-
 
     const handleCheckboxChange = (checked: boolean) => {
-        if (checked) {
-            setCheckState(prev => [...prev, id]);
-            if (qtyValue == 1) {
-                setTotalPrice((prev) => prev + price);
-            } else {
-                setTotalPrice((prev) => prev + pricePerItem);
-            }
-        } else {
-            setCheckState(prev => prev.filter((item) => item !== id));
-            if (qtyValue == 1) {
-                setTotalPrice((prev) => prev - price);
-            } else {
-                setTotalPrice((prev) => prev - pricePerItem);
-            }
+        if(checked){
+            const totalPrice: number = price * qtyValue;
+            setCheckList(prev => [...prev, id]);
+            setListItem(prev => [...prev, {id, totalPrice, qtyValue}]);
+        }else{
+            setListItem(prev => prev.filter((item: any) => item.id !== id));
+            setCheckList(prev => prev.filter((item) => item !== id));
         }
     };
 
     const increment = (): void => {
-        setQtyValue((prev) => prev + 1);
-        setTotalPrice((prev) => prev + price);
-        setPricePerItem((prev) => prev + price);
+        setQtyValue(prev => prev + 1);
     }
 
     const decrement = (): void => {
-        if (qtyValue <= 1) return;
-        setQtyValue((prev) => {
-            if (prev === 1) return 1;
+        setQtyValue(prev => {
+            if(prev <= 1) return 1;
             return prev - 1;
         });
-        setTotalPrice((prev) => prev - price);
-        setPricePerItem((prev) => prev - price);
     }
+
+    useEffect(() => {
+        setListItem(prev => {
+            return prev.map((item) => {
+                if (item.id === id) {
+                  return {
+                    ...item,
+                    qtyValue,
+                    totalPrice: qtyValue * price,
+                  };
+                }
+                return item;
+              })
+        });
+    },[qtyValue])
 
     return (
         <div className="flex flex-col">
@@ -73,3 +80,37 @@ const CartSheetItem: React.FC<CartSheetItemProps> = ({ id, image, title, price, 
 }
 
 export default CartSheetItem;
+
+   // const handleCheckboxChange = (checked: boolean) => {
+    //     if (checked) {
+    //         setCheckState(prev => [...prev, id]);
+    //         if (qtyValue == 1) {
+    //             setTotalPrice((prev) => prev + price);
+    //         } else {
+    //             setTotalPrice((prev) => prev + pricePerItem);
+    //         }
+    //     } else {
+    //         setCheckState(prev => prev.filter((item) => item !== id));
+    //         if (qtyValue == 1) {
+    //             setTotalPrice((prev) => prev - price);
+    //         } else {
+    //             setTotalPrice((prev) => prev - pricePerItem);
+    //         }
+    //     }
+    // };
+
+    // const increment = (): void => {
+    //     setQtyValue((prev) => prev + 1);
+    //     setTotalPrice((prev) => prev + price);
+    //     setPricePerItem((prev) => prev + price);
+    // }
+
+    // const decrement = (): void => {
+    //     if (qtyValue <= 1) return;
+    //     setQtyValue((prev) => {
+    //         if (prev === 1) return 1;
+    //         return prev - 1;
+    //     });
+    //     setTotalPrice((prev) => prev - price);
+    //     setPricePerItem((prev) => prev - price);
+    // }
