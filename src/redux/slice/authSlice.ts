@@ -6,12 +6,14 @@ const authSlice = createSlice({
     reducers: {
         saveTokenAfterLoginSuccess: (state, action) => {
             localStorage.setItem('token', action.payload);
+            console.log(state);
             state = action.payload;
             return action.payload;
         },
 
         clearTokenAfterLogout: (state) => {
             localStorage.removeItem('token');
+            console.log(state);
             state = "";
             return "";
         }

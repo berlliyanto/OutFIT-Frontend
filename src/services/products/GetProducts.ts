@@ -7,14 +7,14 @@ export const useGetProducts = (category: string | undefined, concept: string | u
         queryKey: ["products"],
         queryFn: async() => {
             const response = await axios.get("http://localhost:5000/api/products", {
-                // params: {
-                //     country: 'us',
-                //     lang: 'en',
-                //     currentpage: '0',
-                //     pagesize: pageSize,
-                //     categories: category,
-                //     concepts: concept
-                //   },
+                params: {
+                    country: 'us',
+                    lang: 'en',
+                    currentpage: '0',
+                    pagesize: pageSize,
+                    categories: category,
+                    concepts: concept
+                  },
             });
             return response;        
         },

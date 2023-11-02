@@ -80,37 +80,3 @@ const CartSheetItem: React.FC<CartSheetItemProps> = ({ id, image, title, price, 
 }
 
 export default CartSheetItem;
-
-   // const handleCheckboxChange = (checked: boolean) => {
-    //     if (checked) {
-    //         setCheckState(prev => [...prev, id]);
-    //         if (qtyValue == 1) {
-    //             setTotalPrice((prev) => prev + price);
-    //         } else {
-    //             setTotalPrice((prev) => prev + pricePerItem);
-    //         }
-    //     } else {
-    //         setCheckState(prev => prev.filter((item) => item !== id));
-    //         if (qtyValue == 1) {
-    //             setTotalPrice((prev) => prev - price);
-    //         } else {
-    //             setTotalPrice((prev) => prev - pricePerItem);
-    //         }
-    //     }
-    // };
-
-    // const increment = (): void => {
-    //     setQtyValue((prev) => prev + 1);
-    //     setTotalPrice((prev) => prev + price);
-    //     setPricePerItem((prev) => prev + price);
-    // }
-
-    // const decrement = (): void => {
-    //     if (qtyValue <= 1) return;
-    //     setQtyValue((prev) => {
-    //         if (prev === 1) return 1;
-    //         return prev - 1;
-    //     });
-    //     setTotalPrice((prev) => prev - price);
-    //     setPricePerItem((prev) => prev - price);
-    // }

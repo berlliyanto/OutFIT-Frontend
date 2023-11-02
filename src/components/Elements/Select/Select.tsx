@@ -7,16 +7,18 @@ import {
     SelectTrigger,
     SelectValue,
   } from "@/components/ui/select"
+import { Dispatch, SetStateAction } from "react";
 
 interface SelectDataProps {
     placeholder: string;
     label: string;
     item: string[];
     name: string;
+    setValue: Dispatch<SetStateAction<string>>
 }   
-  const SelectData: React.FC<SelectDataProps> = ({label, item, placeholder, name}) => {
+  const SelectData: React.FC<SelectDataProps> = ({label, item, placeholder, name, setValue}) => {
     return (
-      <Select onValueChange={(value) => {console.log(value)}} name={name}>
+      <Select onValueChange={(value) => setValue(value)} name={name}>
         <SelectTrigger className="w-[180px]">
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>

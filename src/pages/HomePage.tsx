@@ -4,11 +4,8 @@ import HomeBanner from "../components/Fragments/Banner/HomeBanner";
 import HomeLayout from "../components/Layouts/HomeLayout";
 import Footer from "../components/Fragments/Footer/Footer";
 
-interface HomePageInterface {
-    isAuth: boolean;
-}
 
-function HomePage({ isAuth }: HomePageInterface) {
+function HomePage() {
 
     return (
         <Fragment>

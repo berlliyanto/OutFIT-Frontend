@@ -12,11 +12,11 @@ const HomeLayout: React.FC = () => {
     // const renderProducts = () => {
     //     return data?.data.results.map((product: any) => {
     //         return <ProductCard
+    //         code={product.articles[0].code}
     //         previewProduct={product}
     //         images={product.images[0]['baseUrl']}
     //         title={product.name}
     //         price={product.price['formattedValue']}
-    //         onClickTitle={() => { }}
     //         key={product.code} />
     //     });
     // }

@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react"
+import { Fragment } from "react"
 import Header from "../components/Fragments/Navigations/Header"
 import Footer from "@/components/Fragments/Footer/Footer"
 import BannerDefault from "@/components/Fragments/Banner/BannerDefault";

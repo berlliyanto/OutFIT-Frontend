@@ -1,7 +1,6 @@
 import { Fragment } from "react";
 import { Input } from "@/components/ui/input"
-import { MapPin, Plus, Share } from '@phosphor-icons/react';
-import Button from "@/components/Elements/Button/Button";
+import { Plus } from '@phosphor-icons/react';
 import AddressCard from "../Card/AddressCard";
 
 const AddressContent = () => {

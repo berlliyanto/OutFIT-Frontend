@@ -3,7 +3,6 @@ import { NavigateFunction, useNavigate, useParams } from "react-router-dom";
 import HeaderBackButton from "../components/Fragments/Navigations/HeaderBackButton";
 import RouteName from "../router/RouteName";
 import { useGetProfile, useUpdateProfile } from "../services/auth/Profile";
-import useToken from "../hooks/useToken";
 import { useDispatch } from 'react-redux';
 import { clearTokenAfterLogout } from '../redux/slice/authSlice';
 import Swal from 'sweetalert2';

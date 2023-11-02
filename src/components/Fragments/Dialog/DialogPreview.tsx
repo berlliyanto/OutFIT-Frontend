@@ -25,14 +25,15 @@ const DialogPreview: React.FC<PreviewProductInterface> = ({ code, categoryName, 
     const navigate: NavigateFunction = useNavigate();
     const [value, setValue] = useState<number>(0);
     const [totalPrice, setTotalPrice] = useState<number>(0);
+    const [selectedSize, setSelectedSize] = useState<string>("");
 
     const size: string[] = ['Size S', 'Size M', 'Size L', 'Size XL', 'Size XXL'];
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
         if(!isAuth) navigate(RouteName.LOGIN + '?redirect=' + location.pathname);
-        // console.log(e.currentTarget.size.value);
-        // console.log(e.currentTarget.quantity.value);
+        console.log(code);
+        console.log(categoryName);
     }
 
     const increment = (): void => {
@@ -69,7 +70,7 @@ const DialogPreview: React.FC<PreviewProductInterface> = ({ code, categoryName, 
                         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet enim rerum totam ab illum consequuntur cum earum
                     </DialogDescription>
                     <form onSubmit={handleSubmit} className="flex flex-col gap-3 lg:gap-7 lg:mt-2">
-                        <SelectData label="Size" item={size} placeholder="Select Size" name="size" />
+                        <SelectData label="Size" item={size} placeholder="Select Size" name="size" setValue={setSelectedSize}/>
                         <div className="flex justify-between items-end">
                         <InputAddMin name="quantity" increment={increment} decrement={decrement} value={value} setValue={setValue} />
                         <p className="text-sm text-slate-500 lg:text-lg selection:bg-none">Total : ${totalPrice.toFixed(2)}</p>

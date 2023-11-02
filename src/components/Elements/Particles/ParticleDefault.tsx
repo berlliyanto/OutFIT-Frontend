@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import Particles from "react-particles";
-import type { Container, Engine } from "tsparticles-engine";
+import type { Engine } from "tsparticles-engine";
 import { loadSlim } from "tsparticles-slim";
 
 interface ParticleProps {
@@ -16,16 +16,11 @@ const ParticleDefault: React.FC<ParticleProps> = ({classname, onHover, value}) =
         await loadSlim(engine);
     }, []);
 
-    const particlesLoaded = useCallback(async (container: Container | undefined) => {
-        // await console.log(container);
-    }, []);
-
     return (
         <Particles
             className={classname}
             id="tsparticles"
             init={particlesInit}
-            loaded={particlesLoaded}
             options={{
                 fullScreen: {
                     enable: false,

@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import ButtonAuth from "../Elements/Button/ButtonAuth";
 import Input from "../Elements/Input_Label/Input";
-import { MapPin, Phone, Envelope, Icon } from "@phosphor-icons/react";
+import { MapPin, Phone, Envelope } from "@phosphor-icons/react";
 
 interface ContactData {
     title: string;

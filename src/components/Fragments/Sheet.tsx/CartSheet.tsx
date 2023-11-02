@@ -8,7 +8,6 @@ import {
 import React, { ReactNode, useEffect, useState } from "react"
 import CartSheetItem from "./CartSheetItem";
 import ButtonAuth from "@/components/Elements/Button/ButtonAuth";
-import useIdUser from "@/hooks/useIdUser";
 
 interface CartSheetProps {
     children: ReactNode;
@@ -46,7 +45,6 @@ interface ListItemInterface {
 }
 
 const CartSheet: React.FC<CartSheetProps> = ({ children }) => {
-    const id = useIdUser();
     const [totalPrice, setTotalPrice] = useState<number>(0);
     const [listItem, setListItem] = useState<ListItemInterface[]>([]);
     const [checkList, setCheckList] = useState<string[]>([]);

@@ -22,8 +22,8 @@ function ResetPwPage() {
         if (!id || !token) navigate('*');
     }, []);
 
-    const {mutate, isLoading} = useResetPw(
-        (success) => {
+    const {mutate} = useResetPw(
+        () => {
             swal.fire({
                 icon: 'success',
                 title: "Success Reset Password",
@@ -33,8 +33,7 @@ function ResetPwPage() {
                 },
             })
         },
-        (error) => {
-            console.log(error);
+        () => {
             toast.error("Uncaught Error")
         },
         id,

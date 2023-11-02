@@ -15,7 +15,8 @@ function FeaturesPage() {
         <Fragment>
             <Header current="features" />
             {
-                id ? <FeatureLayout id={id} /> : <div className="h-screen w-full flex items-center justify-center box-border text-center text-slate-800 font-bold text-xl">You need to login first</div>
+                id ? <FeatureLayout id={id} /> 
+                : <div className="h-screen w-full flex items-center justify-center box-border text-center text-slate-800 font-bold text-xl">You need to login first</div>
             }
             <Footer />
         </Fragment>
